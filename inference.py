@@ -42,13 +42,13 @@ def inference():
     torch_dtype=inference_args.inference_dtype,
     device_map="auto",
   )
-  model.cuda()
+  # model.cuda() # comment out mode.cuda() rather than all model will be put in the first GPU
   model.eval()
 
   generation_config = GenerationConfig(
     temperature=0.1,
     top_p=0.75,
-    num_beams=4,
+    # num_beams=4,
   )
 
   tokenizer = transformers.AutoTokenizer.from_pretrained(
